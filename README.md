@@ -147,3 +147,41 @@ Reboot your Pi and you should receive an email with your ip address.
 + If you don't get email when rebooting, you have to check the hostname you currently have. because the script calls for #raspberrypi. Just type in the command line # hostname. if you have an other hostname its simple just change you hostname #with your preferred editor. Also in etc/hosts on the bottom of the page.
 
 > $ msg['Subject'] = 'IP For YOUR HOSTNAME on %s' % today.strftime('%b %d %Y')
+
+
+# EDIT: 2017/11/16
+
+```
+# Split IP text block into three, and divide the two containing IPs into words.
+ip_lines = data[0].splitlines()
+print ip_lines
+
+#######
+# EDIT code to avoid errors. Search where is the 'src' to find the IP
+#######
+
+ip_messages = []
+for line in ip_lines:
+  split_line = line.split()
+  if 'src' in split_line:
+    ip_type = connect_type(split_line)
+    ipaddr = split_line[split_line.index('src')+1]
+    my_ip = '\nYour %s ip is %s' % (ip_type, ipaddr)
+    ip_messages.append(my_ip)
+
+email_body = ''.join(ip_messages)
+
+# Creates the text, subject, 'from', and 'to' of the message.
+msg = MIMEText(email_body)
+msg['Subject'] = 'IPs For RaspberryPi on %s' % today.strftime('%b %d %Y')
+msg['From'] = gmail_user
+msg['To'] = to
+# Sends the message
+smtpserver.sendmail(gmail_user, [to], msg.as_string())
+# Closes the smtp server.
+smtpserver.quit()
+
+#######
+# END EDIT Code
+#######
+```
