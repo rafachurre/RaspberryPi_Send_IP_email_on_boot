@@ -4,7 +4,7 @@ Sends email with the RPi IP when booting the Pi. This is useful when moving the 
 # Tutorial
 https://elinux.org/RPi_Email_IP_On_Boot_Debian
 
-***2017/11/16*** - The code in this tutorial leads into errors with indexes when executing in ARMBIAN. I edited the code to search the IP in all the lines instead instead of hardcode the selected lines. This approach avoid outOfBounds errors and index() errors when seaching for 'src' word.
+***2017/11/16*** - The code in this tutorial leads into errors with indexes when executing in ARMBIAN. I edited the code to search the IP in all the lines instead of hardcoding the selected lines. This approach avoid outOfBounds errors and index() errors when seaching for 'src' word.
 
 
 ### What Does it Do?
