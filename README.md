@@ -4,6 +4,8 @@ Sends email with the RPi IP when booting the Pi. This is useful when moving the 
 # Tutorial
 https://elinux.org/RPi_Email_IP_On_Boot_Debian
 
+***2017/11/16*** - The code in this tutorial leads into errors with indexes when executing in ARMBIAN. I edited the code to search the IP in all the lines instead instead of hardcode the selected lines. This approach avoid outOfBounds errors and index() errors when seaching for 'src' word.
+
 
 ### What Does it Do?
 This code will extract the ip address of your Pi and then send an email containing the ip to the specified email address. This is inspired by the need to access the Pi via SSH or other network protocols without a monitor and moving from network to network. This uses a Gmail SMTP server, and assumes you have a valid Gmail address. You may need to alter a bit for other servers (beyond the scope of this article).
