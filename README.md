@@ -187,3 +187,26 @@ smtpserver.quit()
 # END EDIT Code
 #######
 ```
+
+
+# EDIT: 2017/11/19
+
+```
+#######
+# EDIT code to avoid errors stablishing SMTP connection
+#######
+tries = 0
+while True:
+    if (tries > 60):
+        exit()
+    try:
+        smtpserver = smtplib.SMTP('smtp.gmail.com', 587, timeout=30) # Server to use.
+        break
+    except Exception as e:
+        tries = tries + 1
+        time.sleep(1)
+
+#######
+# END EDIT Code
+#######
+```
