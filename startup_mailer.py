@@ -29,18 +29,7 @@ to = 'email@email.com' # Email to send to.
 gmail_user = 'from_email@gmail.com' # Email to send from. (MUST BE GMAIL)
 gmail_password = 'gmailPassword' # Gmail password.
 
-tries = 0
-while True:
-    if (tries > 60):
-        exit()
-    try:
-        smtpserver = smtplib.SMTP('smtp.gmail.com', 587, timeout=30) # Server to use.
-        break
-    except Exception as e:
-        tries = tries + 1
-        time.sleep(1)
-
-#smtpserver = smtplib.SMTP('smtp.gmail.com', 587) # Server to use.
+smtpserver = smtplib.SMTP('smtp.gmail.com', 587) # Server to use.
 
 smtpserver.ehlo()  # Says 'hello' to the server
 smtpserver.starttls()  # Start TLS encryption
